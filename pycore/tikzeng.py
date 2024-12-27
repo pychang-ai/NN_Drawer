@@ -1,4 +1,3 @@
-
 import os
 
 def to_head( projectpath ):
@@ -77,7 +76,6 @@ def to_ConvConvRelu( name, s_filer=256, n_filer=(64,64), offset="(0,0,0)", to="(
 """
 
 
-
 # Pool
 def to_Pool(name, offset="(0,0,0)", to="(0,0,0)", width=1, height=32, depth=32, opacity=0.5, caption=" "):
     return r"""
@@ -109,7 +107,6 @@ def to_UnPool(name, offset="(0,0,0)", to="(0,0,0)", width=1, height=32, depth=32
         }
     };
 """
-
 
 
 def to_ConvRes( name, s_filer=256, n_filer=64, offset="(0,0,0)", to="(0,0,0)", width=6, height=40, depth=40, opacity=0.2, caption=" " ):
@@ -181,18 +178,27 @@ def to_Sum( name, offset="(0,0,0)", to="(0,0,0)", radius=2.5, opacity=0.6):
 
 def to_connection( of, to):
     return r"""
-\draw [connection]  ("""+of+"""-east)    -- node {\midarrow} ("""+to+"""-west);
-"""
+\draw [connection]  ({}-east)    -- node {{\midarrow}} ({}-west);
+""".format(of,to)
 
 def to_skip( of, to, pos=1.25):
     return r"""
-\path ("""+ of +"""-southeast) -- ("""+ of +"""-northeast) coordinate[pos="""+ str(pos) +"""] ("""+ of +"""-top) ;
-\path ("""+ to +"""-south)  -- ("""+ to +"""-north)  coordinate[pos="""+ str(pos) +"""] ("""+ to +"""-top) ;
-\draw [copyconnection]  ("""+of+"""-northeast)  
--- node {\copymidarrow}("""+of+"""-top)
--- node {\copymidarrow}("""+to+"""-top)
--- node {\copymidarrow} ("""+to+"""-north);
-"""
+\path ({}-southeast) -- ({}-northeast) coordinate[pos={}] ({}-top) ;
+\path ({}-south)  -- ({}-north)  coordinate[pos={}] ({}-top) ;
+\draw [copyconnection]  ({}-northeast)  
+-- node {{\copymidarrow}}({}-top)
+-- node {{\copymidarrow}}({}-top)
+-- node {{\copymidarrow}} ({}-north);
+""".format(of, of, pos, of,
+           to, to, pos, to,
+           of,
+           of, to,
+           to)
+
+def to_TextBox(name, caption, offset="(0,0,0)", to="(0,0,0)", width=40):
+    return r"""
+\node[text width={}pt, align=left] ({}) at ($({}+{})$) {{{}}};
+""".format(width, name, to, offset, caption)
 
 def to_end():
     return r"""
@@ -206,6 +212,3 @@ def to_generate( arch, pathname="file.tex" ):
         for c in arch:
             print(c)
             f.write( c )
-     
-
-

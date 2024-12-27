@@ -1,6 +1,7 @@
 %\ProvidesPackage{init}
 \usetikzlibrary{quotes,arrows.meta}
 \usetikzlibrary{positioning}
+\usetikzlibrary{calc}
 
 \def\edgecolor{rgb:blue,4;red,1;green,4;black,3}
 \newcommand{\midarrow}{\tikz \draw[-Stealth,line width =0.8mm,draw=\edgecolor] (-0.3,0) -- ++(0.3,0);}
@@ -9,3 +10,11 @@
 \usepackage{Box}
 \usepackage{RightBandedBox}
 
+% Define text positioning commands
+\newcommand{\toText}[3]{
+    % Parameters:
+    % #1: name (unused)
+    % #2: caption text
+    % #3: coordinates
+    \node[text width=8cm, align=left, font=\small] at #3 {#2};
+}

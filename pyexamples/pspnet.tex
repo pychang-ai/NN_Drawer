@@ -1,0 +1,325 @@
+
+\documentclass[border=8pt, multi, tikz]{standalone} 
+\usepackage{import}
+\subimport{../layers/}{init}
+\usetikzlibrary{positioning}
+\usetikzlibrary{3d} %for including external image 
+
+\def\ConvColor{rgb:yellow,5;red,2.5;white,5}
+\def\ConvReluColor{rgb:yellow,5;red,5;white,5}
+\def\PoolColor{rgb:red,1;black,0.3}
+\def\UnpoolColor{rgb:blue,2;green,1;black,0.3}
+\def\FcColor{rgb:blue,5;red,2.5;white,5}
+\def\FcReluColor{rgb:blue,5;red,5;white,4}
+\def\SoftmaxColor{rgb:magenta,5;black,7}   
+\def\SumColor{rgb:blue,5;green,15}
+
+\newcommand{\copymidarrow}{\tikz \draw[-Stealth,line width=0.8mm,draw={rgb:blue,4;red,1;green,1;black,3}] (-0.3,0) -- ++(0.3,0);}
+
+\begin{document}
+\begin{tikzpicture}
+\tikzstyle{connection}=[ultra thick,every node/.style={sloped,allow upside down},draw=\edgecolor,opacity=0.7]
+\tikzstyle{copyconnection}=[ultra thick,every node/.style={sloped,allow upside down},draw={rgb:blue,4;red,1;green,1;black,3},opacity=0.7]
+
+\pic[shift={(0,0,0)}] at (0,0,0) 
+    {Box={
+        name=conv1,
+        caption=Conv1,
+        xlabel={{128, }},
+        zlabel=64,
+        fill=\ConvColor,
+        height=64,
+        width=2,
+        depth=64
+        }
+    };
+
+\pic[shift={ (2,0,0) }] at (conv1-east) 
+    {Box={
+        name=pool1,
+        caption= ,
+        fill=\PoolColor,
+        opacity=0.5,
+        height=32,
+        width=1,
+        depth=32
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (pool1-east) 
+    {Box={
+        name=res1_1,
+        caption= ,
+        xlabel={{32, }},
+        zlabel=256,
+        fill=\ConvColor,
+        height=32,
+        width=2,
+        depth=32
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (res1_1-east) 
+    {Box={
+        name=res1_2,
+        caption= ,
+        xlabel={{32, }},
+        zlabel=256,
+        fill=\ConvColor,
+        height=32,
+        width=2,
+        depth=32
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (res1_2-east) 
+    {Box={
+        name=res2_1,
+        caption= ,
+        xlabel={{16, }},
+        zlabel=512,
+        fill=\ConvColor,
+        height=16,
+        width=2,
+        depth=16
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (res2_1-east) 
+    {Box={
+        name=res2_2,
+        caption= ,
+        xlabel={{16, }},
+        zlabel=512,
+        fill=\ConvColor,
+        height=16,
+        width=2,
+        depth=16
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (res2_2-east) 
+    {Box={
+        name=res3_1,
+        caption= ,
+        xlabel={{8, }},
+        zlabel=1024,
+        fill=\ConvColor,
+        height=8,
+        width=2,
+        depth=8
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (res3_1-east) 
+    {Box={
+        name=res3_2,
+        caption= ,
+        xlabel={{8, }},
+        zlabel=1024,
+        fill=\ConvColor,
+        height=8,
+        width=2,
+        depth=8
+        }
+    };
+
+\pic[shift={ (3,3,0) }] at (res3_2-east) 
+    {Box={
+        name=pool_1x1,
+        caption=1x1 pool,
+        fill=\PoolColor,
+        opacity=0.5,
+        height=1,
+        width=1,
+        depth=1
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (pool_1x1-east) 
+    {Box={
+        name=conv_1x1,
+        caption= ,
+        xlabel={{8, }},
+        zlabel=256,
+        fill=\ConvColor,
+        height=8,
+        width=2,
+        depth=8
+        }
+    };
+
+\pic[shift={ (3,1,0) }] at (res3_2-east) 
+    {Box={
+        name=pool_2x2,
+        caption=2x2 pool,
+        fill=\PoolColor,
+        opacity=0.5,
+        height=2,
+        width=1,
+        depth=2
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (pool_2x2-east) 
+    {Box={
+        name=conv_2x2,
+        caption= ,
+        xlabel={{8, }},
+        zlabel=256,
+        fill=\ConvColor,
+        height=8,
+        width=2,
+        depth=8
+        }
+    };
+
+\pic[shift={ (3,-1,0) }] at (res3_2-east) 
+    {Box={
+        name=pool_3x3,
+        caption=3x3 pool,
+        fill=\PoolColor,
+        opacity=0.5,
+        height=3,
+        width=1,
+        depth=3
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (pool_3x3-east) 
+    {Box={
+        name=conv_3x3,
+        caption= ,
+        xlabel={{8, }},
+        zlabel=256,
+        fill=\ConvColor,
+        height=8,
+        width=2,
+        depth=8
+        }
+    };
+
+\pic[shift={ (3,-3,0) }] at (res3_2-east) 
+    {Box={
+        name=pool_6x6,
+        caption=6x6 pool,
+        fill=\PoolColor,
+        opacity=0.5,
+        height=6,
+        width=1,
+        depth=6
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (pool_6x6-east) 
+    {Box={
+        name=conv_6x6,
+        caption= ,
+        xlabel={{8, }},
+        zlabel=256,
+        fill=\ConvColor,
+        height=8,
+        width=2,
+        depth=8
+        }
+    };
+
+\pic[shift={(4,0,0)}] at (res3_2-east) 
+    {Box={
+        name=concat,
+        caption=Concat,
+        xlabel={{8, }},
+        zlabel=1024,
+        fill=\ConvColor,
+        height=8,
+        width=2,
+        depth=8
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (concat-east) 
+    {Box={
+        name=conv_final,
+        caption= ,
+        xlabel={{8, }},
+        zlabel=512,
+        fill=\ConvColor,
+        height=8,
+        width=2,
+        depth=8
+        }
+    };
+
+\pic[shift={ (2,0,0) }] at (conv_final-east) 
+    {Box={
+        name=unpool,
+        caption= ,
+        fill=\UnpoolColor,
+        opacity=0.5,
+        height=64,
+        width=1,
+        depth=64
+        }
+    };
+
+\pic[shift={(2,0,0)}] at (unpool-east) 
+    {Box={
+        name=output,
+        caption=Output,
+        xlabel={{64, }},
+        zlabel=150,
+        fill=\ConvColor,
+        height=64,
+        width=1,
+        depth=64
+        }
+    };
+
+\draw [connection]  (conv1-east)    -- node {\midarrow} (pool1-west);
+
+\draw [connection]  (pool1-east)    -- node {\midarrow} (res1_1-west);
+
+\draw [connection]  (res1_1-east)    -- node {\midarrow} (res1_2-west);
+
+\draw [connection]  (res1_2-east)    -- node {\midarrow} (res2_1-west);
+
+\draw [connection]  (res2_1-east)    -- node {\midarrow} (res2_2-west);
+
+\draw [connection]  (res2_2-east)    -- node {\midarrow} (res3_1-west);
+
+\draw [connection]  (res3_1-east)    -- node {\midarrow} (res3_2-west);
+
+\draw [connection]  (res3_2-east)    -- node {\midarrow} (pool_1x1-west);
+
+\draw [connection]  (pool_1x1-east)    -- node {\midarrow} (conv_1x1-west);
+
+\draw [connection]  (res3_2-east)    -- node {\midarrow} (pool_2x2-west);
+
+\draw [connection]  (pool_2x2-east)    -- node {\midarrow} (conv_2x2-west);
+
+\draw [connection]  (res3_2-east)    -- node {\midarrow} (pool_3x3-west);
+
+\draw [connection]  (pool_3x3-east)    -- node {\midarrow} (conv_3x3-west);
+
+\draw [connection]  (res3_2-east)    -- node {\midarrow} (pool_6x6-west);
+
+\draw [connection]  (pool_6x6-east)    -- node {\midarrow} (conv_6x6-west);
+
+\draw [connection]  (conv_1x1-east)    -- node {\midarrow} (concat-west);
+
+\draw [connection]  (conv_2x2-east)    -- node {\midarrow} (concat-west);
+
+\draw [connection]  (conv_3x3-east)    -- node {\midarrow} (concat-west);
+
+\draw [connection]  (conv_6x6-east)    -- node {\midarrow} (concat-west);
+
+\draw [connection]  (res3_2-east)    -- node {\midarrow} (concat-west);
+
+\draw [connection]  (concat-east)    -- node {\midarrow} (conv_final-west);
+
+\draw [connection]  (conv_final-east)    -- node {\midarrow} (unpool-west);
+
+\draw [connection]  (unpool-east)    -- node {\midarrow} (output-west);
+
+\end{tikzpicture}
+\end{document}
