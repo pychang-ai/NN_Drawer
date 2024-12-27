@@ -1,6 +1,10 @@
 # Neural Network Architecture Visualization
 
+<div align="center">
+
 [English](README.md) | [中文](README_zh.md) | [日本語](README_ja.md)
+
+</div>
 
 This repository contains tools and examples for visualizing neural network architectures using TikZ and LaTeX. It provides a clean and professional way to create publication-quality neural network architecture diagrams.
 

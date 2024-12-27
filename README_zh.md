@@ -1,6 +1,10 @@
 # 神經網絡架構可視化工具
 
+<div align="center">
+
 [English](README.md) | [中文](README_zh.md) | [日本語](README_ja.md)
+
+</div>
 
 這個倉庫包含了使用 TikZ 和 LaTeX 來可視化神經網絡架構的工具和示例。它提供了一種創建出版品質的神經網絡架構圖的專業方式。
 
