@@ -1,5 +1,7 @@
 # Neural Network Architecture Visualization
 
+[English](README.md) | [中文](README_zh.md) | [日本語](README_ja.md)
+
 This repository contains tools and examples for visualizing neural network architectures using TikZ and LaTeX. It provides a clean and professional way to create publication-quality neural network architecture diagrams.
 
 ## Features
@@ -151,4 +153,3 @@ if __name__ == '__main__':
 Now, run the program as follows:
 
     bash ../tikzmake.sh my_arch
-
