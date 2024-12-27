@@ -1,22 +1,77 @@
-# PlotNeuralNet
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2526396.svg)](https://doi.org/10.5281/zenodo.2526396)
+# Neural Network Architecture Visualization
 
-Latex code for drawing neural networks for reports and presentation. Have a look into examples to see how they are made. Additionally, lets consolidate any improvements that you make and fix any bugs to help more people with this code.
+This repository contains tools and examples for visualizing neural network architectures using TikZ and LaTeX. It provides a clean and professional way to create publication-quality neural network architecture diagrams.
+
+## Features
+
+- Beautiful and customizable neural network architecture visualization
+- Support for various layer types (Conv, Pool, FC, etc.)
+- Easy-to-use Python interface for generating diagrams
+- Multiple example architectures included
 
 ## Examples
 
-Following are some network representations:
+The repository includes visualizations for several popular neural network architectures:
 
-<p align="center"><img  src="https://user-images.githubusercontent.com/17570785/50308846-c2231880-049c-11e9-8763-3daa1024de78.png" width="85%" height="85%"></p>
-<h6 align="center">FCN-8 (<a href="https://www.overleaf.com/read/kkqntfxnvbsk">view on Overleaf</a>)</h6>
+- PSPNet (Pyramid Scene Parsing Network)
+- U-Net
+- DeepLabV3+
+- Custom CNN architectures
 
+## Requirements
 
-<p align="center"><img  src="https://user-images.githubusercontent.com/17570785/50308873-e2eb6e00-049c-11e9-9587-9da6bdec011b.png" width="85%" height="85%"></p>
-<h6 align="center">FCN-32 (<a href="https://www.overleaf.com/read/wsxpmkqvjnbs">view on Overleaf</a>)</h6>
+- Python 3.x
+- LaTeX distribution (e.g., MiKTeX or TeX Live)
+- Required Python packages:
+  - graphviz
+  - python-graphviz
+  - numpy
+  - matplotlib
 
+## Usage
 
-<p align="center"><img  src="https://user-images.githubusercontent.com/17570785/50308911-03b3c380-049d-11e9-92d9-ce15669017ad.png" width="85%" height="85%"></p>
-<h6 align="center">Holistically-Nested Edge Detection (<a href="https://www.overleaf.com/read/jxhnkcnwhfxp">view on Overleaf</a>)</h6>
+1. Clone the repository:
+```bash
+git clone https://github.com/pychang-ai/NN_Drawer.git
+cd NN_Drawer/PlotNeuralNet
+```
+
+2. Check the examples in the `pyexamples` directory:
+```bash
+cd pyexamples
+python pspnet.py  # Generates PSPNet architecture
+python unet.py    # Generates U-Net architecture
+```
+
+3. Create your own architecture:
+- Copy one of the example files
+- Modify the network structure according to your needs
+- Run the Python script to generate the diagram
+
+## Directory Structure
+
+- `layers/`: Contains LaTeX style files and basic building blocks
+- `pycore/`: Core Python utilities for generating network diagrams
+- `pyexamples/`: Example network architecture implementations
+  - `pspnet.py`: PSPNet implementation
+  - `unet.py`: U-Net implementation
+  - `deeplabv3plus.py`: DeepLabV3+ implementation
+  - `custom_cnn.py`: Custom CNN example
+
+## Contributing
+
+Feel free to contribute by:
+1. Opening issues for bugs or feature requests
+2. Submitting pull requests for improvements
+3. Adding new network architecture examples
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+This project is based on the PlotNeuralNet framework and has been enhanced with additional features and examples.
 
 ## Getting Started
 1. Install the following packages on Ubuntu.
@@ -26,7 +81,7 @@ Following are some network representations:
         ```
 
     * Ubuntu 18.04.2
-Base on this [website](https://gist.github.com/rain1024/98dd5e2c6c8c28f9ea9d), please install the following packages.
+Base on this [website](https://gist.github.com/rain1024/98dd4e2c6c8c28f9ea9d), please install the following packages.
         ```
         sudo apt-get install texlive-latex-base
         sudo apt-get install texlive-fonts-recommended
@@ -96,6 +151,4 @@ if __name__ == '__main__':
 Now, run the program as follows:
 
     bash ../tikzmake.sh my_arch
-
-
 
