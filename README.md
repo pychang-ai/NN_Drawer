@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[English](#english) | [中文](#中文) | [日本語](#日本語)
+[English](docs/README.md) | [中文](docs/README.zh.md) | [日本語](docs/README.ja.md)
 
 </div>
 
