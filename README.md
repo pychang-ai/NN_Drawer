@@ -1,21 +1,26 @@
-# Neural Network Architecture Visualization
+# Neural Network Architecture Visualization / 神經網絡架構可視化工具 / ニューラルネットワークアーキテクチャ可視化ツール
 
 <div align="center">
 
-[English](README.md) | [中文](README_zh.md) | [日本語](README_ja.md)
+[English](#english) | [中文](#中文) | [日本語](#日本語)
 
 </div>
 
+<details>
+<summary>English</summary>
+
+## Overview
+
 This repository contains tools and examples for visualizing neural network architectures using TikZ and LaTeX. It provides a clean and professional way to create publication-quality neural network architecture diagrams.
 
-## Features
+### Features
 
 - Beautiful and customizable neural network architecture visualization
 - Support for various layer types (Conv, Pool, FC, etc.)
 - Easy-to-use Python interface for generating diagrams
 - Multiple example architectures included
 
-## Examples
+### Examples
 
 The repository includes visualizations for several popular neural network architectures:
 
@@ -24,7 +29,7 @@ The repository includes visualizations for several popular neural network archit
 - DeepLabV3+
 - Custom CNN architectures
 
-## Requirements
+### Requirements
 
 - Python 3.x
 - LaTeX distribution (e.g., MiKTeX or TeX Live)
@@ -34,7 +39,7 @@ The repository includes visualizations for several popular neural network archit
   - numpy
   - matplotlib
 
-## Usage
+### Usage
 
 1. Clone the repository:
 ```bash
@@ -54,30 +59,135 @@ python unet.py    # Generates U-Net architecture
 - Modify the network structure according to your needs
 - Run the Python script to generate the diagram
 
-## Directory Structure
+</details>
 
-- `layers/`: Contains LaTeX style files and basic building blocks
-- `pycore/`: Core Python utilities for generating network diagrams
-- `pyexamples/`: Example network architecture implementations
-  - `pspnet.py`: PSPNet implementation
-  - `unet.py`: U-Net implementation
-  - `deeplabv3plus.py`: DeepLabV3+ implementation
-  - `custom_cnn.py`: Custom CNN example
+<details>
+<summary>中文</summary>
 
-## Contributing
+## 概述
 
-Feel free to contribute by:
-1. Opening issues for bugs or feature requests
-2. Submitting pull requests for improvements
-3. Adding new network architecture examples
+這個倉庫包含了使用 TikZ 和 LaTeX 來可視化神經網絡架構的工具和示例。它提供了一種創建出版品質的神經網絡架構圖的專業方式。
 
-## License
+### 功能特點
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+- 美觀且可自定義的神經網絡架構可視化
+- 支持各種層類型（卷積層、池化層、全連接層等）
+- 易於使用的 Python 接口來生成圖表
+- 包含多個示例架構
 
-## Acknowledgments
+### 示例
 
-This project is based on the PlotNeuralNet framework and has been enhanced with additional features and examples.
+本倉庫包含了幾個流行的神經網絡架構的可視化：
+
+- PSPNet（金字塔場景解析網絡）
+- U-Net
+- DeepLabV3+
+- 自定義 CNN 架構
+
+### 環境要求
+
+- Python 3.x
+- LaTeX 發行版（如 MiKTeX 或 TeX Live）
+- 需要的 Python 包：
+  - graphviz
+  - python-graphviz
+  - numpy
+  - matplotlib
+
+### 使用方法
+
+1. 克隆倉庫：
+```bash
+git clone https://github.com/pychang-ai/NN_Drawer.git
+cd NN_Drawer/PlotNeuralNet
+```
+
+2. 查看 `pyexamples` 目錄中的示例：
+```bash
+cd pyexamples
+python pspnet.py  # 生成 PSPNet 架構
+python unet.py    # 生成 U-Net 架構
+```
+
+3. 創建自己的架構：
+- 複製一個示例文件
+- 根據需要修改網絡結構
+- 運行 Python 腳本生成圖表
+
+</details>
+
+<details>
+<summary>日本語</summary>
+
+## 概要
+
+このリポジトリには、TikZとLaTeXを使用してニューラルネットワークアーキテクチャを可視化するためのツールと例が含まれています。出版品質のニューラルネットワークアーキテクチャ図を作成するための専門的な方法を提供します。
+
+### 特徴
+
+- 美しくカスタマイズ可能なニューラルネットワークアーキテクチャの可視化
+- 様々な層タイプ（Conv、Pool、FC等）のサポート
+- 図を生成するための使いやすいPythonインターフェース
+- 複数のアーキテクチャ例を含む
+
+### 例
+
+このリポジトリには、以下の人気のあるニューラルネットワークアーキテクチャの可視化が含まれています：
+
+- PSPNet（Pyramid Scene Parsing Network）
+- U-Net
+- DeepLabV3+
+- カスタムCNNアーキテクチャ
+
+### 必要条件
+
+- Python 3.x
+- LaTeX配布（MiKTeXまたはTeX Live等）
+- 必要なPythonパッケージ：
+  - graphviz
+  - python-graphviz
+  - numpy
+  - matplotlib
+
+### 使用方法
+
+1. リポジトリをクローン：
+```bash
+git clone https://github.com/pychang-ai/NN_Drawer.git
+cd NN_Drawer/PlotNeuralNet
+```
+
+2. `pyexamples`ディレクトリの例を確認：
+```bash
+cd pyexamples
+python pspnet.py  # PSPNetアーキテクチャを生成
+python unet.py    # U-Netアーキテクチャを生成
+```
+
+3. 独自のアーキテクチャを作成：
+- 例のファイルをコピー
+- 必要に応じてネットワーク構造を修正
+- Python スクリプトを実行して図を生成
+
+</details>
+
+## Directory Structure / 目錄結構 / ディレクトリ構造
+
+- `layers/`: Contains LaTeX style files and basic building blocks / 包含 LaTeX 樣式文件和基本構建塊 / LaTeXスタイルファイルと基本的なビルディングブロックを含む
+- `pycore/`: Core Python utilities / Python 核心工具 / Pythonコアユーティリティ
+- `pyexamples/`: Example implementations / 示例實現 / 実装例
+  - `pspnet.py`: PSPNet
+  - `unet.py`: U-Net
+  - `deeplabv3plus.py`: DeepLabV3+
+  - `custom_cnn.py`: Custom CNN / 自定義 CNN / カスタムCNN
+
+## License / 許可證 / ライセンス
+
+MIT License - see the LICENSE file for details / 查看 LICENSE 文件了解詳情 / 詳細はLICENSEファイルを参照してください。
+
+## Acknowledgments / 致謝 / 謝辞
+
+Based on PlotNeuralNet framework with additional features and examples / 基於 PlotNeuralNet 框架，並增加了額外的功能和示例 / PlotNeuralNetフレームワークをベースに、追加の機能と例を加えて拡張
 
 ## Getting Started
 1. Install the following packages on Ubuntu.
