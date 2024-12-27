@@ -6,10 +6,8 @@
 
 </div>
 
-<details>
-<summary>English</summary>
-
-## Overview
+<a name="english"></a>
+## English
 
 This repository contains tools and examples for visualizing neural network architectures using TikZ and LaTeX. It provides a clean and professional way to create publication-quality neural network architecture diagrams.
 
@@ -59,12 +57,10 @@ python unet.py    # Generates U-Net architecture
 - Modify the network structure according to your needs
 - Run the Python script to generate the diagram
 
-</details>
+---
 
-<details>
-<summary>中文</summary>
-
-## 概述
+<a name="中文"></a>
+## 中文
 
 這個倉庫包含了使用 TikZ 和 LaTeX 來可視化神經網絡架構的工具和示例。它提供了一種創建出版品質的神經網絡架構圖的專業方式。
 
@@ -114,12 +110,10 @@ python unet.py    # 生成 U-Net 架構
 - 根據需要修改網絡結構
 - 運行 Python 腳本生成圖表
 
-</details>
+---
 
-<details>
-<summary>日本語</summary>
-
-## 概要
+<a name="日本語"></a>
+## 日本語
 
 このリポジトリには、TikZとLaTeXを使用してニューラルネットワークアーキテクチャを可視化するためのツールと例が含まれています。出版品質のニューラルネットワークアーキテクチャ図を作成するための専門的な方法を提供します。
 
@@ -169,7 +163,7 @@ python unet.py    # U-Netアーキテクチャを生成
 - 必要に応じてネットワーク構造を修正
 - Python スクリプトを実行して図を生成
 
-</details>
+---
 
 ## Directory Structure / 目錄結構 / ディレクトリ構造
 
